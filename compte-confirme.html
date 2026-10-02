@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Adresse confirmée — MyRoutine</title><meta name="robots" content="noindex"><link rel="stylesheet" href="style.css"></head>
+<body><main>
+<header><a href="./">MyRoutine</a></header>
+<div id="ok">
+<h1>Ton adresse est confirmée</h1>
+<p>Tu peux fermer cette page, retourner dans l'application MyRoutine et te connecter avec ton adresse e-mail et ton mot de passe.</p>
+</div>
+<div id="erreur" hidden>
+<h1>Ce lien ne marche plus</h1>
+<p>Il a peut-être expiré, ou il a déjà servi. Si ton adresse est déjà confirmée, connecte-toi simplement dans l'application.</p>
+<p>Sinon, écris-nous à <a href="mailto:contact@myroutine.fr">contact@myroutine.fr</a> depuis l'adresse de ton compte.</p>
+</div>
+<footer><a href="confidentialite.html">Confidentialité</a> · <a href="mailto:contact@myroutine.fr">contact@myroutine.fr</a></footer>
+</main>
+<script>
+(function(){
+  try{
+    var p=new URLSearchParams((location.hash||'').replace(/^#/,'')+'&'+(location.search||'').replace(/^\?/,''));
+    if(p.get('error')||p.get('error_code')){
+      document.getElementById('ok').hidden=true;
+      document.getElementById('erreur').hidden=false;
+    }
+    if(location.hash||location.search){history.replaceState(null,'',location.pathname);}
+  }catch(e){}
+})();
+</script>
+</body></html>
